@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "bKAZopl/z9BCfVvJUJ83pup5oGDSrc6bX2KIN/eizhDKWF6CY0rS0RMyV7GJDeg5wx7kEwq38ad768AFsOkFAQ==",
+  "success": true,
+  "projectFilePath": "D:\\Programming\\Auto-Mapper\\Auto Mapper\\Auto Mapper\\Auto Mapper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\harit\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\harit\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\harit\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

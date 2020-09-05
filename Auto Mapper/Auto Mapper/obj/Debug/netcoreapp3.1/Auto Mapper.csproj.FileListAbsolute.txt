@@ -1,0 +1,4 @@
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\Auto Mapper.exe
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.csprojAssemblyReference.cache
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.AssemblyInfoInputs.cache
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.AssemblyInfo.cs
