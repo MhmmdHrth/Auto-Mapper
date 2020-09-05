@@ -6,4 +6,8 @@
     <RootNamespace>Auto_Mapper</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+  </ItemGroup>
+
 </Project>
