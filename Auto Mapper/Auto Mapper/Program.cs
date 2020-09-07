@@ -22,7 +22,11 @@ namespace Auto_Mapper
                 cfg.CreateMap<Value, Total>()
                     .ForMember(dest => dest.total, option => option.MapFrom<CustomeResolver>());
 
-                cfg.ValueTransformers.Add<string>(val => $"{val} Hensem");
+                //cfg.ValueTransformers.Add<string>(val => $"{val} Hensem");
+
+                cfg.CreateMap<Person, PersonDto>()
+                    .BeforeMap((src, dest) => src.Age = src.Age + 10)
+                    .AfterMap<CallMeJohnDoe>();
             });
 
             var mapper = new Mapper(configuration);
@@ -60,14 +64,23 @@ namespace Auto_Mapper
             //var result = mapper.Map<Total>(value);
             //Console.WriteLine(result.total);
 
-            var source = new Source
+            //Value transformer
+            //var source = new Source
+            //{
+            //    Greeting = "Muhammad Harith"
+            //};
+
+            //var destination = mapper.Map<Destination>(source);
+            //Console.WriteLine(destination.Greeting);
+
+            //Before and after map action
+            var person = new Person
             {
-                Greeting = "Muhammad Harith"
+                Name = "Harith"
             };
 
-            var destination = mapper.Map<Destination>(source);
-            Console.WriteLine(destination.Greeting);
-
+            var destination = mapper.Map<PersonDto>(person);
+            Console.WriteLine($"{destination.Name} {destination.Age}");
         }
     }
 
@@ -110,12 +123,24 @@ namespace Auto_Mapper
     public class Value
     {
         public int Value1 { get; set; }
-        public int Value2{ get; set; }
+        public int Value2 { get; set; }
     }
 
     public class Total
     {
         public int total { get; set; }
+    }
+
+    public class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
+
+    public class PersonDto
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
     }
 
     public class DateTimeTypeConverter : ITypeConverter<string, DateTime>
@@ -142,6 +167,14 @@ namespace Auto_Mapper
                 .ForMember(dest => dest.Hour, option => option.MapFrom(src => src.Date.Hour))
                 .ForMember(dest => dest.Minute, option => option.MapFrom(src => src.Date.Minute))
                 .ForMember(dest => dest.Second, option => option.MapFrom(src => src.Date.Second));
+        }
+    }
+
+    public class CallMeJohnDoe : IMappingAction<Person, PersonDto>
+    {
+        public void Process(Person source, PersonDto destination, ResolutionContext context)
+        {
+            destination.Name = $"John {destination.Name}";
         }
     }
 
