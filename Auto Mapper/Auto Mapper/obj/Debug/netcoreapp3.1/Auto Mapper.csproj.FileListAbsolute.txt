@@ -2,3 +2,14 @@ D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\Auto 
 D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.csprojAssemblyReference.cache
 D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.AssemblyInfoInputs.cache
 D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.AssemblyInfo.cs
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\Auto Mapper.deps.json
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\Auto Mapper.runtimeconfig.json
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\Auto Mapper.runtimeconfig.dev.json
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\Auto Mapper.dll
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\Auto Mapper.pdb
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.csproj.CoreCompileInputs.cache
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.csproj.CopyComplete
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.dll
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.pdb
+D:\Programming\Auto-Mapper\Auto Mapper\Auto Mapper\obj\Debug\netcoreapp3.1\Auto Mapper.genruntimeconfig.cache

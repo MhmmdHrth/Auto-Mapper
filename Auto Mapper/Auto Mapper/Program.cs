@@ -8,6 +8,7 @@ namespace Auto_Mapper
     {
         static void Main(string[] args)
         {
+            //create mapper configuration
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Source, Destination>();
@@ -17,7 +18,9 @@ namespace Auto_Mapper
             //OR
             var mapper2 = configuration.CreateMapper();
 
-    
+            var source = new Source { Value = 1 };
+
+            var destination = mapper.Map<Destination>(source);
         }
     }
 
