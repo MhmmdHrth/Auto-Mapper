@@ -15,11 +15,14 @@ namespace Auto_Mapper
                 cfg.CreateMap<StringClass, IntClass>();
 
                 cfg.AddProfile<MappingProfile>();
+
                 cfg.CreateMap<string, int>().ConvertUsing(s => Convert.ToInt32(s));
                 cfg.CreateMap<string, DateTime>().ConvertUsing<DateTimeTypeConverter>();
 
                 cfg.CreateMap<Value, Total>()
                     .ForMember(dest => dest.total, option => option.MapFrom<CustomeResolver>());
+
+                cfg.ValueTransformers.Add<string>(val => $"{val} Hensem");
             });
 
             var mapper = new Mapper(configuration);
@@ -46,14 +49,24 @@ namespace Auto_Mapper
             //Console.WriteLine(IntClass.Number);
             //Console.WriteLine(IntClass.Date);
 
-            var value = new Value
+
+            //custom resolver
+            //var value = new Value
+            //{
+            //    Value1 = 4,
+            //    Value2 = 5
+            //};
+
+            //var result = mapper.Map<Total>(value);
+            //Console.WriteLine(result.total);
+
+            var source = new Source
             {
-                Value1 = 4,
-                Value2 = 5
+                Greeting = "Muhammad Harith"
             };
 
-            var result = mapper.Map<Total>(value);
-            Console.WriteLine(result.total);
+            var destination = mapper.Map<Destination>(source);
+            Console.WriteLine(destination.Greeting);
 
         }
     }
@@ -61,11 +74,13 @@ namespace Auto_Mapper
     public class Source
     {
         public int Value { get; set; }
+        public string Greeting { get; set; }
     }
 
     public class Destination
     {
         public int Value { get; set; }
+        public string Greeting { get; set; }
     }
 
     public class Source2
