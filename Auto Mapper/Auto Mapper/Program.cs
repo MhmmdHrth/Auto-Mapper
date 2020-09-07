@@ -17,10 +17,14 @@ namespace Auto_Mapper
                 cfg.AddProfile<MappingProfile>();
                 cfg.CreateMap<string, int>().ConvertUsing(s => Convert.ToInt32(s));
                 cfg.CreateMap<string, DateTime>().ConvertUsing<DateTimeTypeConverter>();
+
+                cfg.CreateMap<Value, Total>()
+                    .ForMember(dest => dest.total, option => option.MapFrom<CustomeResolver>());
             });
 
             var mapper = new Mapper(configuration);
 
+            //Profile Mapping
             //var source2 = new Source2
             //{
             //    Date = new DateTime(2018, 3, 3, 12, 45, 56)
@@ -30,16 +34,26 @@ namespace Auto_Mapper
 
             //Console.WriteLine(destination.Hour.Equals(source2.Date.Hour));
 
-            var StringClass = new StringClass
+            //Converter
+            //var StringClass = new StringClass
+            //{
+            //    Number = "5",
+            //    Date = "12/02/2019" //month|Day|Year
+            //};
+
+            //var IntClass = mapper.Map<IntClass>(StringClass);
+
+            //Console.WriteLine(IntClass.Number);
+            //Console.WriteLine(IntClass.Date);
+
+            var value = new Value
             {
-                Number = "5",
-                Date = "12/02/2019" //month|Day|Year
+                Value1 = 4,
+                Value2 = 5
             };
 
-            var IntClass = mapper.Map<IntClass>(StringClass);
-
-            Console.WriteLine(IntClass.Number);
-            Console.WriteLine(IntClass.Date);
+            var result = mapper.Map<Total>(value);
+            Console.WriteLine(result.total);
 
         }
     }
@@ -78,11 +92,30 @@ namespace Auto_Mapper
         public DateTime Date { get; set; }
     }
 
+    public class Value
+    {
+        public int Value1 { get; set; }
+        public int Value2{ get; set; }
+    }
+
+    public class Total
+    {
+        public int total { get; set; }
+    }
+
     public class DateTimeTypeConverter : ITypeConverter<string, DateTime>
     {
         public DateTime Convert(string source, DateTime destination, ResolutionContext context)
         {
             return System.Convert.ToDateTime(source);
+        }
+    }
+
+    public class CustomeResolver : IValueResolver<Value, Total, int>
+    {
+        public int Resolve(Value source, Total destination, int destMember, ResolutionContext context)
+        {
+            return source.Value1 + source.Value2;
         }
     }
 
