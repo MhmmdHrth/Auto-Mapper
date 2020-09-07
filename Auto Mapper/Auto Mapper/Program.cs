@@ -11,8 +11,9 @@ namespace Auto_Mapper
             //create mapper configuration
             var configuration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Source, Destination>();
+                cfg.CreateMap<Source, Destination>().ValueTransformers.Add<string>(val => $"{val} Hensem");
                 cfg.CreateMap<StringClass, IntClass>();
+                cfg.CreateMap(typeof(GenSource<>), typeof(GenDestination<>));
 
                 cfg.AddProfile<MappingProfile>();
 
@@ -21,8 +22,6 @@ namespace Auto_Mapper
 
                 cfg.CreateMap<Value, Total>()
                     .ForMember(dest => dest.total, option => option.MapFrom<CustomeResolver>());
-
-                //cfg.ValueTransformers.Add<string>(val => $"{val} Hensem");
 
                 cfg.CreateMap<Person, PersonDto>()
                     .BeforeMap((src, dest) => src.Age = src.Age + 10)
@@ -74,13 +73,22 @@ namespace Auto_Mapper
             //Console.WriteLine(destination.Greeting);
 
             //Before and after map action
-            var person = new Person
+            //var person = new Person
+            //{
+            //    Name = "Harith"
+            //};
+
+            //var destination = mapper.Map<PersonDto>(person);
+            //Console.WriteLine($"{destination.Name} {destination.Age}");
+
+            //generic
+            var source = new GenSource<int>
             {
-                Name = "Harith"
+                Value = 123
             };
 
-            var destination = mapper.Map<PersonDto>(person);
-            Console.WriteLine($"{destination.Name} {destination.Age}");
+            var destination = mapper.Map<GenSource<int>>(source);
+            Console.WriteLine(destination.Value);
         }
     }
 
@@ -143,6 +151,16 @@ namespace Auto_Mapper
         public int Age { get; set; }
     }
 
+    public class GenSource<T>
+    {
+        public T Value { get; set; }
+    }
+
+    public class GenDestination<T>
+    {
+        public T Value { get; set; }
+    }
+
     public class DateTimeTypeConverter : ITypeConverter<string, DateTime>
     {
         public DateTime Convert(string source, DateTime destination, ResolutionContext context)
@@ -177,6 +195,8 @@ namespace Auto_Mapper
             destination.Name = $"John {destination.Name}";
         }
     }
+
+
 
 
 }
